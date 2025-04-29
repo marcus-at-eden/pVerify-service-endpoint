@@ -1,0 +1,16 @@
+{
+  "name": "pverify-service-endpoint",
+  "version": "1.0.0",
+  "description": "service endpoint for pVerify",
+  "repository": {
+    "type": "git",
+    "url": "eden-github:marcus-at-eden/pVerify-service-endpoint.git"
+  },
+  "license": "ISC",
+  "author": "marcus-at-eden",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
