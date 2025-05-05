@@ -16,7 +16,7 @@ export async function makePVerifyRequest(endpoint, payload, debug) {
 
   // If the debug flag is set, do not execute the request, but log it instead.
   if (debug) {
-    console.log(`Debug flag set. \n Request to pVerify: ${request}`);
+    console.log(`Debug flag set. \n Request to pVerify: ${JSON.stringify(request)}`);
     return {};
   }
 
