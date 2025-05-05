@@ -12,10 +12,8 @@ export async function handleInsuranceVerification(payloadArgs, payers, debug) {
     payloadArgs.payerCode = payerCode;
   }
 
-  if (debug) {
-    const pVerifyResponse = await makePVerifyRequest(payloadArgs);
-    return processInsuranceVerificationResponse(pVerifyResponse);
-  }
+  const pVerifyResponse = await makePVerifyRequest(payloadArgs, debug);
+  return processInsuranceVerificationResponse(pVerifyResponse);
 
   // let copayPrimary = null;
   // let copaySpecialist = null;
