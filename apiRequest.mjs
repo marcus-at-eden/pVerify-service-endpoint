@@ -17,9 +17,8 @@ export async function makePVerifyRequest(payload, debug) {
 
   // If the debug flag is set, do not execute the request, but log it instead.
   if (debug) {
-    
     console.log(`Debug flag set. \n Request to pVerify: ${request}`);
-
+    return {};
   }
 
   const response = await fetch(endpoint, request);
