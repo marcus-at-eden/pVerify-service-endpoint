@@ -9,16 +9,20 @@ export async function makePVerifyRequest(payload, debug) {
     "Client-API-Id": clientApiId,
   };
 
-  // If the debug flag is set, do not execute the request, but log it instead.
-  if (debug) {
-    console.log(`Debug flag set. \n Request to pVerify: ${{method: "POST", headers: reqHeaders, body: JSON.stringify(payload)}}`);
-  }
-
-  const response = await fetch(endpoint, {
+  const request = {
     method: "POST",
     headers: reqHeaders,
     body: JSON.stringify(payload),
-  });
+  }; 
+
+  // If the debug flag is set, do not execute the request, but log it instead.
+  if (debug) {
+    
+    console.log(`Debug flag set. \n Request to pVerify: ${request}`);
+
+  }
+
+  const response = await fetch(endpoint, request);
 
   return response.json();
 }
