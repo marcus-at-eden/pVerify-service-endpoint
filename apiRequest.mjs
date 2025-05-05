@@ -1,5 +1,4 @@
-export async function makePVerifyRequest(payload, debug) {
-  const endpoint = process.env.endpoint;
+export async function makePVerifyRequest(endpoint, payload, debug) {
   const clientApiId = process.env.clientApiID;
   const clientSecret = process.env.clientSecret;
 

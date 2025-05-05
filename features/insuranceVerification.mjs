@@ -12,7 +12,7 @@ export async function handleInsuranceVerification(payloadArgs, payers, debug) {
     payloadArgs.payerCode = payerCode;
   }
 
-  const pVerifyResponse = await makePVerifyRequest(payloadArgs, debug);
+  const pVerifyResponse = await makePVerifyRequest(process.env.insuranceVerificationEndpoint, payloadArgs, debug);
   return processInsuranceVerificationResponse(pVerifyResponse);
 
   // let copayPrimary = null;
