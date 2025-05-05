@@ -14,10 +14,7 @@ export const handler = async (event) => {
     const body = JSON.parse(event.body);
     const { payloadArgs, feature, debug } = body;
 
-    // If the debug flag is set, do not execute the request to pVerify, just log the body and behavior
-    if (debug) {
-      console.log(`Received event with debug flag. \n${payloadArgs} \n${feature}`);
-    }
+    console.log(`Received event with debug == ${debug}. \n${payloadArgs} \n${feature}`);
 
     if (!payloadArgs) {
       return {
@@ -30,10 +27,10 @@ export const handler = async (event) => {
 
     switch (feature) {
       case "insuranceVerification":
-        result = await handleInsuranceVerification(payloadArgs, payers);
+        result = await handleInsuranceVerification(payloadArgs, payers, debug);
         break;
       case "insuranceValidation":
-        result = await handleInsuranceValidation(payloadArgs);
+        result = await handleInsuranceValidation(payloadArgs, debug);
       default:
         return {
           statusCode: 400,
