@@ -1,4 +1,5 @@
 import { handleInsuranceVerification } from "./features/insuranceVerification.mjs";
+import { handleInsuranceValidation } from "./features/insuranceValidation.mjs";
 import { payers } from "./constants.mjs";
 
 export const handler = async (event) => {
