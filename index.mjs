@@ -31,6 +31,7 @@ export const handler = async (event) => {
         break;
       case "insuranceValidation":
         result = await handleInsuranceValidation(payloadArgs, debug);
+        break;
       default:
         return {
           statusCode: 400,
