@@ -12,7 +12,37 @@ export async function handleInsuranceVerification(payloadArgs, payers, debug) {
     payloadArgs.payerCode = payerCode;
   }
 
-  const pVerifyResponse = await makePVerifyRequest(process.env.insuranceVerificationEndpoint, payloadArgs, debug);
+  // Validate the payload args
+  const requiredFields = [
+    "providerLastName",
+    "providerNPI",
+    "memberID",
+    "patientDOB",
+    "practiceTypeCode",
+    "patientFirstName",
+    "patientLastName",
+    "dateOfService"
+  ];
+
+  const missingFields = requiredFields.filter(field => !payloadArgs[field]);
+
+  if (missingFields.length > 0) {
+    throw new Error(`Missing required fields: ${missingFields.join(", ")}`);
+  }
+
+  // Reformat the payload according to pVerify
+  const pVerifyPayload = {
+    "payerCode": payloadArgs.payerCode,
+    "provider_lastname": payloadArgs.providerLastName,
+    "provider_npi": payloadArgs.providerNPI,
+    "Patient_First": payloadArgs.patientFirstName,
+    "Patient_Last": payloadArgs.patientLastName,
+    "memberId": payloadArgs.memberID,
+    "Patient_DOB": payloadArgs.patientDOB,
+    "date_of_Service": payloadArgs.dateOfService,
+  } 
+
+  const pVerifyResponse = await makePVerifyRequest(process.env.insuranceVerificationEndpoint, pVerifyPayload, debug);
   return processInsuranceVerificationResponse(pVerifyResponse);
 
   // let copayPrimary = null;
