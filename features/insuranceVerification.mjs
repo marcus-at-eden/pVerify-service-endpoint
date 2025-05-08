@@ -33,13 +33,14 @@ export async function handleInsuranceVerification(payloadArgs, payers, debug) {
   // Reformat the payload according to pVerify
   const pVerifyPayload = {
     "payerCode": payloadArgs.payerCode,
-    "provider_lastname": payloadArgs.providerLastName,
-    "provider_npi": payloadArgs.providerNPI,
+    "Provider_LastName": payloadArgs.providerLastName,
+    "Provider_NPI": payloadArgs.providerNPI,
     "Patient_First": payloadArgs.patientFirstName,
     "Patient_Last": payloadArgs.patientLastName,
     "memberId": payloadArgs.memberID,
     "Patient_DOB": payloadArgs.patientDOB,
-    "date_of_Service": payloadArgs.dateOfService,
+    "PracticeTypeCode": payloadArgs.practiceTypeCode,
+    "Date_Of_Service": payloadArgs.dateOfService,
   } 
 
   const pVerifyResponse = await makePVerifyRequest(process.env.insuranceVerificationEndpoint, pVerifyPayload, debug);
