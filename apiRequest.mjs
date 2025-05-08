@@ -28,8 +28,8 @@ async function getBearerToken() {
 export async function makePVerifyRequest(endpoint, payload, debug) {
 
   // First get the bearer token from pVerify
-  bearerTokenResponse = await getBearerToken();
-  token = bearerTokenResponse.access_token;
+  const bearerTokenResponse = await getBearerToken();
+  const token = bearerTokenResponse.access_token;
   
   // Confirm bearer token if debug is on
   if (debug) {
