@@ -4,7 +4,6 @@ async function getBearerToken() {
   urlencoded.append("Client_Id", process.env.clientApiID);
   urlencoded.append("Client_Secret", process.env.clientSecret);
   urlencoded.append("grant_type", "client_credentials");
-  urlencoded.append("", "");
 
   var requestOptions = {
     method: 'POST',
@@ -31,6 +30,11 @@ export async function makePVerifyRequest(endpoint, payload, debug) {
   // First get the bearer token from pVerify
   bearerTokenResponse = await getBearerToken();
   token = bearerTokenResponse.access_token;
+  
+  // Confirm bearer token if debug is on
+  if (debug) {
+    console.log(`Retrieved bearer token from pVerify: ${token}`);
+  }
 
   const reqHeaders = {
     "Content-Type": "application/json",
