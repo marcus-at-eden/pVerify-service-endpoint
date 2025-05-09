@@ -76,3 +76,7 @@ export async function processInsuranceVerificationResponse(pVerifyResponse) {
 
     return parsedResponseObject;
 }
+
+export async function processInsuranceValidationResponse(pVerifyResponse) {
+    return {}
+}
