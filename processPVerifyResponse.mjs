@@ -73,4 +73,6 @@ export async function processInsuranceVerificationResponse(pVerifyResponse) {
             parsedResponseObject[field] = pVerifyResponse[field];
         }
     });
+
+    return parsedResponseObject;
 }
